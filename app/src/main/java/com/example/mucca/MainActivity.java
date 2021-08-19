@@ -3,10 +3,13 @@ package com.example.mucca;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,6 +35,12 @@ public class MainActivity extends AppCompatActivity {
         Button moveRight= findViewById(R.id.buttonRight);
         Button moveDown= findViewById(R.id.buttonDown);
         Button moveLeft= findViewById(R.id.buttonLeft);
+        MediaPlayer muuSound = MediaPlayer.create(this,R.raw.moo);
+        mucca.setOnClickListener(v->{
+            muuSound.start();
+            Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotation);
+            mucca.startAnimation(animation);
+        });
 
         moveUp.setOnTouchListener(new View.OnTouchListener() {
             @Override
